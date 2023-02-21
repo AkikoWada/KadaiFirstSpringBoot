@@ -1,6 +1,6 @@
 package com.techacademy;
 
-import java.time.DayOfWeek;
+//import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +10,37 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KadaiFirstController {
 
+
     // ----- パラメーターの文字列（ｙｙｙｙMMdd）を日付型に変換して曜日判定 -----
     @GetMapping("/dayofweek/{date}/")
-    public DayOfWeek dispDayOfWeek(@PathVariable String date) {
+    public String dispDayOfWeek(@PathVariable String date) {
         LocalDate date2 = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyyMMdd"));
-        DayOfWeek res = date2.getDayOfWeek();
+        String res = null;
+
+        switch(date2.getDayOfWeek()) {
+        case MONDAY:
+            res = "Monday";
+            break;
+        case TUESDAY:
+            res = "Tuesday";
+            break;
+        case WEDNESDAY:
+            res = "Wednesday";
+            break;
+        case THURSDAY:
+            res = "Thursday";
+            break;
+        case FRIDAY:
+            res = "Friday";
+            break;
+        case SATURDAY:
+            res = "Saturday";
+        case SUNDAY:
+            res = "Sunday";
+            break;
+        default: ;
+            break;
+    }
         return res;
     }
 
