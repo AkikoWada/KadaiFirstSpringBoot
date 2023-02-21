@@ -12,7 +12,7 @@ public class KadaiFirstController {
 
 
     // ----- パラメーターの文字列（ｙｙｙｙMMdd）を日付型に変換して曜日判定 -----
-    @GetMapping("/dayofweek/{date}/")
+    @GetMapping("/dayofweek/{date}")
     public String dispDayOfWeek(@PathVariable String date) {
         LocalDate date2 = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyyMMdd"));
         String res = null;
